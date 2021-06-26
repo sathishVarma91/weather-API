@@ -1,0 +1,77 @@
+<div class="main--block">
+    <div class="container">
+        <div *ngIf="errorMessage">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>{{errorMessage}}</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </div>
+        <div class="header--block">
+            <h1>Weather Report App</h1>
+        </div>
+        <div class="grid--block table-responsive">
+            <table class="table">
+                <thead class="table-light">
+                    <tr>
+                        <th>City Name</th>
+                        <th>Weather Report</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of weatherData; let i = index">
+                        <td class="city--name">
+                            <span>
+                                {{item.cityName}}
+                            </span>
+                            <form action="" [formGroup]="weatherForm" *ngIf="isEdit">
+                                <div class="input-group mt-2">
+                                    <input type="text" class="form-control" placeholder="Enter City Name"
+                                        aria-label="Enter City Name" aria-describedby="button-addon2"
+                                        formControlName="cityName">
+                                    <button class="btn btn-outline-primary" type="button" id="button-addon2"
+                                        [disabled]="!weatherForm.valid" (click)="updateWeatherInfo(item)">Update</button>
+                                </div>
+                            </form>
+                        </td>
+                        <td>
+                            <div class="card">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <!-- <div class="temp">{{item?.main?.temp | temperatureConverter:'F'}}&deg;</div> -->
+                                        <div class="temp">{{item.temparature}}&deg;</div>
+                                        <div class="location">{{item?.cityName}}</div>
+                                    </div>
+                                    <div class="col-6 justify-content-right">
+                                        <i [class]="getClass(item)"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td colspan="2">
+                            <div *ngIf="weatherData.length > 0">
+                                <button class="me-3 btn btn-outline-primary btn-sm mt-3" (click)="showEdit(item)">Edit</button>
+                                <button class="btn btn-outline-danger btn-sm mt-3" (click)="deleteReport(i)">Delete</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td *ngIf="!isEdit">
+                            <form action="" [formGroup]="weatherForm">
+                                <div class="input-group mt-2">
+                                    <input type="text" class="form-control" placeholder="Enter City Name"
+                                        aria-label="Enter City Name" aria-describedby="button-addon2"
+                                        formControlName="cityName">
+                                    <button class="btn btn-outline-primary" type="button" id="button-addon2"
+                                        [disabled]="!weatherForm.valid" (click)="getWeatherInfo()">Add</button>
+                                </div>
+                                <div id="emailHelp" class="form-text">City name is at least 3 characters.
+                                </div>
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

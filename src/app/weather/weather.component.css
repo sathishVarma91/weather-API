@@ -1,0 +1,40 @@
+.main--block {
+    padding: 20px 30px;
+    background-color: #D2E5F5;
+    height: 100%;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.header--block {
+    margin-bottom: 20px;
+}
+
+.header--block h1 {
+    color: #3c3c3c;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.card {
+    padding: 1.2rem 3rem 1rem 3rem;
+    margin: 1rem;
+    border-radius: 1.5rem;
+    border-color: rgba(238, 237, 237, 0.438);
+    box-shadow: 5px 8px 10px #80808033;
+    max-width: 400px;
+    background-color: #fdf5a9;
+}
+.icon {
+    font-size: 50px;
+    float: right;
+}
+ .input-group {
+    width: 70%;
+}
+.city--name span{
+    color: #3c3c3c;
+    font-size: 16px;
+    font-weight: 700;
+}
